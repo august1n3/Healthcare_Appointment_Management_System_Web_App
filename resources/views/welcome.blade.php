@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>Heroes · Bootstrap v5.3</title>
+    <title>CareConnect · HEMS v1.0</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
 
@@ -231,7 +231,7 @@
       <p class="lead mb-4">CareConnect is designed to streamline the scheduling process for healthcare providers and patients. By automating appointment bookings, reminders, and cancellations, this system aims to reduce administrative burden, minimize no-shows, and improve patient satisfaction.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-3">
         <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Request Demo</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Go To Dashboard</button>
+        <a href="./signin"><button type="button" class="btn btn-outline-secondary btn-lg px-4">Go To Dashboard</button></a>
       </div>
     </div>
     <div class="overflow-hidden" style="max-height: 50vh;">
