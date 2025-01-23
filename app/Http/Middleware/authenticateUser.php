@@ -16,7 +16,7 @@ class authenticateUser
     public function handle(Request $request, Closure $next): Response
     {
         if(!$request->session()->has('userID')){
-            return redirect('./signin');
+            return redirect('./');
         }
         return $next($request);
     }

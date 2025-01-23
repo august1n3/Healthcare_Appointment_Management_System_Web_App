@@ -271,19 +271,19 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="./patients/index.html">
+              <a class="nav-link d-flex align-items-center gap-2" href="./dashboard/patients">
                 <svg class="bi"><use xlink:href="#people"/></svg>
                 Patients
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="./appointments/index.html">
+              <a class="nav-link d-flex align-items-center gap-2" href="./dashboard/appointments">
                 <svg class="bi"><use xlink:href="#file-medical"/></svg>
                 Appointments
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="./doctors">
+              <a class="nav-link d-flex align-items-center gap-2" href="./dashboard/doctors">
                 <svg class="bi"><use xlink:href="#hospital"/></svg>
                 Doctors
               </a>

@@ -400,168 +400,39 @@
             </tr>
           </thead>
           <tbody>
+          @foreach ($patients as $patient)
             <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>text</td>
+              <td>{{$patient->id}}</td>
+              <td>{{$patient->first_name}}</td>
+              <td>{{$patient->last_name}}</td>
+              <td>{{$patient->email}}</td>
+              <td>{{$patient->phone_number}}</td>
+              <td>{{$patient->gender}}</td>
+              <td>{{$patient->age}}</td>
             </tr>
-            <tr>
-              <td>1,002</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>text</td>
-              <td>random</td>
-              <td>layout</td>
-              <td>dashboard</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,007</td>
-              <td>placeholder</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>irrelevant</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,008</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,009</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,010</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,011</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,012</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>layout</td>
-              <td>dashboard</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,013</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>visual</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,014</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,015</td>
-              <td>random</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
+          @endforeach
+            
           </tbody>
        
         </table>
       </div>
+      @if($user_role == 'admin')
       <div class="bd-example m-0 border-0 position-fixed bottom-0  mb-3 me-3">
         <div class="d-flex justify-content-between flex-wrap">
+          
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDefault">
             Add A New Patient
           </button>
         </div>
       </div>
+      @endif
     </main>
 
   </div>
 </div>
 
 
-
+@if($user_role == 'admin')
 <div class="modal fade" id="exampleModalDefault" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -570,10 +441,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-6" action="#" method="post">
+        <form class="row g-6" action="./patient" method="post">
+          @csrf
           <div class="col-md-6">
             <label for="validationServer01" class="form-label">First name</label>
-            <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
+            <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required name="first_name"> 
             <div class="valid-feedback">
               Looks good!
             </div>
@@ -583,7 +455,7 @@
           </div>
           <div class="col-md-6">
             <label for="validationServer02" class="form-label">Last name</label>
-            <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
+            <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required name="last_name">
             <div class="valid-feedback">
               Looks good!
             </div>
@@ -592,7 +464,7 @@
             <label for="validationServerUsername" class="form-label">Phone number</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend3">+255</span>
-              <input type="tel" class="form-control is-valid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required>
+              <input type="tel" class="form-control is-valid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required name="phone_number">
               <div class="invalid-feedback">
                 Please enter phone number
               </div>
@@ -602,17 +474,17 @@
             <label for="validationServerUsername" class="form-label">Email</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend3">@</span>
-              <input type="email" class="form-control is-valid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required>
+              <input type="email" class="form-control is-valid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required name="email">
               <div class="invalid-feedback">
                 Please enter a valid email.
               </div>
             </div>
           </div>
           <div class="col-md-5">
-            <label for="validationServer04" class="form-label">State</label>
-            <select class="form-select is-valid" id="validationServer04" required>
-              <option selected disabled value="">Male</option>
-              <option>Female</option>
+            <label for="validationServer04" class="form-label">Gender</label>
+            <select class="form-select is-valid" id="validationServer04" required name="gender">
+              <option selected disabled value="M">Male</option>
+              <option value="F">Female</option>
             </select>
             <div class="invalid-feedback">
               Please select a valid state.
@@ -620,7 +492,7 @@
           </div>
           <div class="col-md-7">
             <label for="validationServer05" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control is-valid" id="validationServer05" required>
+            <input type="date" class="form-control is-valid" id="validationServer05" required name="birth_date">
             <div class="invalid-feedback">
               Please provide a valid date.
             </div>
@@ -641,6 +513,7 @@
     </div>
   </div>
 </div>
+@endif
 
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../cheatsheet.js"></script></body>

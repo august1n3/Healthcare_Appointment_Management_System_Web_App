@@ -392,19 +392,21 @@
             <tr>
               <th scope="col">#ID</th>
               <th scope="col">First name</th>
+              <th scope="col">Middle name</th>
               <th scope="col">Last name</th>
               <th scope="col">Specialization</th>
               <th scope="col">Hire Date</th>
             </tr>
           </thead>
           <tbody>
-          @foreach ($doctors as $doctot)
+          @foreach ($doctors as $doctor)
             <tr>
               <td>{{$doctor->id}}</td>
               <td>{{$doctor->first_name}}</td>
               <td>{{$doctor->middle_name}}</td>
+              <td>{{$doctor->last_name}}</td>
               <td>{{$doctor->specialization}}</td>
-              <td>{{$doctor->hire_date}}</td>
+              <td>{{$doctor->hired_date}}</td>
             </tr>
           @endforeach
           </tbody>
@@ -429,14 +431,26 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add a New Patient</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add a New Doctor</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-6" action="#" method="post">
+        
+        <form class="row g-6" action="./doctor" method="post">
+        @csrf
           <div class="col-md-6">
             <label for="validationServer01" class="form-label">First name</label>
-            <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
+            <input type="text" class="form-control is-valid" id="validationServer01" value="" required name="first_name">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Please provide a valid date.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationServer01" class="form-label">Middle name</label>
+            <input type="text" class="form-control is-valid" id="validationServer01" value="" required name="middle_name">
             <div class="valid-feedback">
               Looks good!
             </div>
@@ -446,18 +460,21 @@
           </div>
           <div class="col-md-6">
             <label for="validationServer02" class="form-label">Last name</label>
-            <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
+            <input type="text" class="form-control is-valid" id="validationServer02" value="" required name="last_name">
             <div class="valid-feedback">
               Looks good!
             </div>
           </div>
           <div class="col-md-13">
-            <label for="validationServerUsername" class="form-label">Phone number</label>
+            <label for="validationServerUsername" class="form-label"></label>
             <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend3">+255</span>
-              <input type="tel" class="form-control is-valid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required>
+              <span class="input-group-text" id="inputGroupPrepend3">Specialization</span>
+              <select class="form-select is-valid" id="validationServer04" required name="specialization">
+                <option selected value="General">General</option>
+                <option value="Kidney">Kidney</option>
+              </select>
               <div class="invalid-feedback">
-                Please enter phone number
+                Please enter patient's ID
               </div>
             </div>
           </div>
@@ -465,36 +482,34 @@
             <label for="validationServerUsername" class="form-label">Email</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend3">@</span>
-              <input type="email" class="form-control is-valid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required>
+              <input type="email" class="form-control is-valid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required name="email">
               <div class="invalid-feedback">
                 Please enter a valid email.
               </div>
             </div>
           </div>
           <div class="col-md-5">
-            <label for="validationServer04" class="form-label">State</label>
-            <select class="form-select is-valid" id="validationServer04" required>
-              <option selected disabled value="">Male</option>
-              <option>Female</option>
+            <label for="validationServer04" class="form-label">Gender</label>
+            <select class="form-select is-valid" id="validationServer04" required name="gender">
+              <option selected value="M">Male</option>
+              <option value="F">Female</option>
             </select>
             <div class="invalid-feedback">
               Please select a valid state.
             </div>
           </div>
           <div class="col-md-7">
-            <label for="validationServer05" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control is-valid" id="validationServer05" required>
+            <label for="validationServer05" class="form-label">Date of Hire</label>
+            <input type="date" class="form-control is-valid" id="validationServer05" required name="hire_date">
             <div class="invalid-feedback">
               Please provide a valid date.
             </div>
           </div>
           <div class="col-12">
-            <div class="form-check">
-  
-            </div>
+
           </div>
           <div class="col-12">
-            <button class="btn btn-primary" type="submit">Save patient's Details</button>
+            <button class="btn btn-primary" type="submit">Save Doctor's Details</button>
           </div>
         </form>
       </div>
